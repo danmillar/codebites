@@ -8,13 +8,18 @@
         codebites: version,
 
         constructor: Codebites,
+        selector: "",
 
         init: function(selector, context, root) {
+            if(!selector) {
+                return this;
+            }
+
             // TODO: Check if context is an instance of Codebites
-            
             // TODO: Check if selector is a function
-            
-            // If Codebites() is called the selector is #Document
+            // If Codebites() is called the selector is #document
+
+            Codebites.fn.selector = selector;
 
             return Codebites.fn;
         }
@@ -24,7 +29,7 @@
     Codebites.fn.init.prototype = Codebites.fn;
 
     // All Codebites objects should point back to these
-    root = Codebites(document);
+    root = Codebites(window.document);
 
     if (typeof module === "object" && module && typeof module.exports === "object") {
         // Expose Codebites in loaders that implement the Node module pattern.
