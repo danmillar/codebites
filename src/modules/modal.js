@@ -3,6 +3,6 @@
  *  Codebites may be freely distributed under the MIT license.
  */
 
-    cb.modal = function() {
-        
+    Codebites.fn.modal = function() {
+        console.log('Modals baby');
     };

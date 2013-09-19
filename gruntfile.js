@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     concat: {
       options: {
         banner: "<%= meta.banner %>" + ";(function() {\n\n\t",
-        footer: "\n}).call(this);",
+        footer: "\n}).call(window);",
         stripBanners: true,
         process: true,
         separator: "\n\t"

@@ -1,26 +1,9 @@
-//  Codebites.js 0.0.1
-//  http://codebites.co.uk
-//  (c) 2013 Dan Millar
-//  Codebites may be freely distributed under the MIT license.
+/*
+ *  Codebites.js - Core / Init
+ *  Codebites may be freely distributed under the MIT license.
+ */
 
-;(function() {
-
-	var root,
-    
-        // Map over Codebites in case of overwrite
-        _Codebites = window.Codebites,
-
-        // Map over cb in case of overwrite
-        _cb = window.cb,
-
-        // Define a local copy of Codebites
-        Codebites = function(selector, context) {
-            // The Codebites object is actually just the init constructor 'enhanced'
-            return new Codebites.fn.init(selector, context, root);
-        },
-
-        version = "0.0.1";
-	Codebites.fn = Codebites.prototype = {
+    Codebites.fn = Codebites.prototype = {
         // The current version of Codebites being used
         codebites: version,
 
@@ -60,9 +43,3 @@
     if ( typeof window === "object" && typeof window.document === "object" ) {
         window.Codebites = window.cb = Codebites;
     }    
-
-	Codebites.fn.modal = function() {
-        console.log('Modals baby');
-    };
-
-}).call(window);
