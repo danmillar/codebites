@@ -1,0 +1,7 @@
+{
+  "name": "Codebites",
+  "version": "0.0.1",
+  "ignore": ["*.md", "package.json", ".bowerrc", "bower.json"],
+   "dependencies": {},
+   "devDependencies": {}
+}
