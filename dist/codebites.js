@@ -20,6 +20,7 @@
         },
 
         version = "0.0.1";
+        
 	Codebites.fn = Codebites.prototype = {
         // The current version of Codebites being used
         codebites: version,
@@ -47,8 +48,47 @@
 
     // All Codebites objects should point back to these
     root = Codebites(window.document);
+ 
+	// Cross browser event handling
+    Codebites.events = {
+        add: function(obj, type, fn) {
+            if (obj.attachEvent) {
+                obj['e'+type+fn] = fn;
 
-    if (typeof module === "object" && module && typeof module.exports === "object") {
+                obj[type+fn] = function() {
+                    obj['e'+type+fn](window.event);
+                }
+                
+                obj.attachEvent('on'+type, obj[type+fn]);
+            } else
+                obj.addEventListener(type, fn, false);
+        },
+
+        remove: function(obj, type, fn) {
+            if (obj.detachEvent) {
+                obj.detachEvent('on'+type, obj[type+fn]);
+                
+                obj[type+fn] = null;
+            } else
+                obj.removeEventListener(type, fn, false);
+        }
+    };
+
+    Codebites.fn.on = function() {
+
+
+    };
+
+    Codebites.fn.off = function() {
+
+
+    };
+
+	Codebites.fn.modal = function() {
+        console.log('Modals baby');
+    };
+
+	if (typeof module === "object" && module && typeof module.exports === "object") {
         // Expose Codebites in loaders that implement the Node module pattern.
         module.exports = Codebites;
     } else {
@@ -65,9 +105,5 @@
     if ( typeof window === "object" && typeof window.document === "object" ) {
         window.Codebites = window.cb = Codebites;
     }    
-
-	Codebites.fn.modal = function() {
-        console.log('Modals baby');
-    };
 
 }).call(window);
